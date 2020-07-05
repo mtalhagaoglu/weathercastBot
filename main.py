@@ -26,4 +26,4 @@ while True:
     else:
         wait = 30 - minute
     print("Wake me {} min later sweetie ♥".format(wait))
-    sleep(60 * 30) #30 minutes
+    sleep(60 * wait) #30 minutes
