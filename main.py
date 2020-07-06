@@ -10,6 +10,7 @@ while True:
     tz = pytz.timezone('Europe/Istanbul')
     hour = datetime.now(tz).strftime("%H")
     minute = datetime.now(tz).strftime("%M")
+    print(datetime.now(tz))
     if hour in controlTimes:
         sendDailyTweet(getToday(),hour)
         # Tweet today's weathercast
