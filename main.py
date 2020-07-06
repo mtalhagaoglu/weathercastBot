@@ -11,7 +11,7 @@ while True:
     hour = datetime.now(tz).strftime("%H")
     minute = datetime.now(tz).strftime("%M")
     print(datetime.now(tz))
-    if hour in controlTimes and minute == 0:
+    if hour in controlTimes and minute == "00":
         sendDailyTweet(getToday(),hour)
         # Tweet today's weathercast
 
