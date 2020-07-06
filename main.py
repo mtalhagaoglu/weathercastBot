@@ -4,7 +4,7 @@ from datetime import datetime
 from time import *
 import pytz
 
-controlTimes = ["7","18"]
+controlTimes = ["07","18"]
 
 while True:
     tz = pytz.timezone('Europe/Istanbul')
