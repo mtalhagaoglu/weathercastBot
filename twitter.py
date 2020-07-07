@@ -1,5 +1,7 @@
 import tweepy
 import json
+import random
+import os.path
 
 with open("secret.json") as json_data_file:
     data = json.load(json_data_file)
@@ -19,7 +21,24 @@ def sendDailyTweet(status,hour):
         kindWord = "Günaydın"
     else:
         kindWord = "İyi akşamlar"
-    tweet = "{}!\nBugün hava {} ve {} derece!".format(kindWord,status["weather"][0]["description"],status["feels_like"]["day"])
+    if random.choice([0,0,1]):
+        print("Funny text")
+        id = status["weather"][0]["id"]
+        if(id == 800):
+            if os.path.isfile("templates/800.txt"):
+                file = open("templates/{}xx.txt", "r")
+                arrayOfLines = file.readlines()
+                funnyWord = random.choice(arrayOfLines)
+        else:
+            id = int(round(id/100,1))
+            if os.path.isfile('templates/{}xx.txt'.format(id)):
+                file = open("templates/{}xx.txt".format(id),"r")
+                arrayOfLines = file.readlines()
+                funnyWord = random.choice(arrayOfLines)
+    else:
+        print("not funny word")
+        funnyWord = ""
+    tweet = "{}!\nBugün hava {} ve {} derece!\n{}".format(kindWord,status["weather"][0]["description"],status["feels_like"]["day"],funnyWord)
     print(tweet)
     api.update_status(status=tweet)
 
