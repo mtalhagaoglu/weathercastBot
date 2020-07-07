@@ -26,7 +26,7 @@ def sendDailyTweet(status,hour):
         id = status["weather"][0]["id"]
         if(id == 800):
             if os.path.isfile("templates/800.txt"):
-                file = open("templates/{}xx.txt", "r")
+                file = open("templates/800.txt", "r")
                 arrayOfLines = file.readlines()
                 funnyWord = random.choice(arrayOfLines)
         else:
