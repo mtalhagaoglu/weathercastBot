@@ -4,7 +4,7 @@ from datetime import datetime
 from time import *
 import pytz
 
-controlTimes = ["07","18"]
+controlTimes = ["07","18","22"]
 
 while True:
     tz = pytz.timezone('Europe/Istanbul')
@@ -12,7 +12,10 @@ while True:
     minute = datetime.now(tz).strftime("%M")
     print(datetime.now(tz))
     if hour in controlTimes and minute == "00":
-        sendDailyTweet(getToday(),hour)
+        if hour == "22":
+            sendDailyTweet(getTomorrow(),hour)
+        else:
+            sendDailyTweet(getToday(),hour)
         # Tweet today's weathercast
 
     rainStatus = rainyCheck()

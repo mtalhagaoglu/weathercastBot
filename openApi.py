@@ -28,6 +28,11 @@ def getToday():
     today = data["daily"][0]
     return today
 
+def getTomorrow():
+    data = makeRequest()
+    tomorrow = data["daily"][1]
+    return tomorrow
+
 def rainyCheck():
     data = makeRequest()
     current = data["hourly"][0]

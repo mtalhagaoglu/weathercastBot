@@ -17,10 +17,13 @@ api = tweepy.API(auth)
 
 def sendDailyTweet(status,hour):
     print(status)
+    dayWord = "Bugün"
     if int(hour) < 12:
         kindWord = "Günaydın"
     else:
         kindWord = "İyi akşamlar"
+        if int(hour) > 20:
+            dayWord = "Yarın"
     if random.choice([0,0,1]):
         print("Funny text")
         id = status["weather"][0]["id"]
@@ -38,7 +41,9 @@ def sendDailyTweet(status,hour):
     else:
         print("not funny word")
         funnyWord = ""
-    tweet = "{}!\nBugün hava {} ve {} derece!\n{}".format(kindWord,status["weather"][0]["description"],status["feels_like"]["day"],funnyWord)
+    description = status["weather"][0]["description"]
+    feels_like = round(status["feels_like"]["day"])
+    tweet = "{}!\n{} hava {} ve hissidilen sıcaklık {} derece!\n{}".format(kindWord,dayWord,description,feels_like,funnyWord)
     print(tweet)
     api.update_status(status=tweet)
 
