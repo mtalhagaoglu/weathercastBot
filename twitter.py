@@ -20,30 +20,32 @@ def sendDailyTweet(status,hour):
     dayWord = "Bugün"
     if int(hour) < 12:
         kindWord = "Günaydın"
+        feels_like = round(status["temp"]["day"])
     else:
         kindWord = "İyi akşamlar"
+        feels_like = round(status["temp"]["eve"])
         if int(hour) > 20:
             dayWord = "Yarın"
+            feels_like = round(status["temp"]["day"])
     if random.choice([0,0,1]):
         print("Funny text")
         id = status["weather"][0]["id"]
         if(id == 800):
             if os.path.isfile("templates/800.txt"):
-                file = open("templates/800.txt", "r")
+                file = open("templates/800.txt", "r",encoding="utf-8")
                 arrayOfLines = file.readlines()
                 funnyWord = random.choice(arrayOfLines)
         else:
             id = int(round(id/100,1))
             if os.path.isfile('templates/{}xx.txt'.format(id)):
-                file = open("templates/{}xx.txt".format(id),"r")
+                file = open("templates/{}xx.txt".format(id),"r",encoding="utf-8")
                 arrayOfLines = file.readlines()
                 funnyWord = random.choice(arrayOfLines)
     else:
         print("not funny word")
         funnyWord = ""
     description = status["weather"][0]["description"]
-    feels_like = round(status["feels_like"]["day"])
-    tweet = "{}!\n{} hava {} ve hissidilen sıcaklık {} derece!\n{}".format(kindWord,dayWord,description,feels_like,funnyWord)
+    tweet = "{}!\n{} hava {} ve sıcaklık {} derece!\n{}".format(kindWord,dayWord,description,feels_like,funnyWord)
     print(tweet)
     api.update_status(status=tweet)
 
