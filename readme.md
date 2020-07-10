@@ -5,6 +5,7 @@ A twitter weathercastbot. It's live on => twitter.com/havadurumubot
   - Everyday at 7 am it sends daily weathercast
   - Everyday at 6 pm it sends this night's weathercast
   - Everyday at 11 pm it sends tomorrow's weathercast
+  - Every 30 minutes it checks rain status and if there is it sends tweet
   - with %20 chance it will send tweets with selected funny word from templastes (you can customize them for your language)
  
 ### Tech
