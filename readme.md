@@ -28,7 +28,7 @@ Create a secret.json inside of weathercastBot folder. It have to looks like this
 }
 ```
 
-You can customize your city with editing main.py. https://openweathermap.org/api
+You can customize your city with editing openApi.py. https://openweathermap.org/api
 After create secret.json, you can run .py file.
 
 ```sh
@@ -39,4 +39,4 @@ $ python3 main.py
 
 ### ToDo
 
-- User cron instead of sleep
+- Use cron instead of sleep
