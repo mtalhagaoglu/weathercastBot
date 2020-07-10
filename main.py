@@ -7,7 +7,7 @@ import pytz
 controlTimes = ["07","18","22"]
 
 while True:
-    tz = pytz.timezone('Europe/Istanbul')
+    tz = pytz.timezone('Europe/Istanbul')  #Timezone
     hour = datetime.now(tz).strftime("%H")
     minute = datetime.now(tz).strftime("%M")
     print(datetime.now(tz))
