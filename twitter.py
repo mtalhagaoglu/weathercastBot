@@ -20,13 +20,13 @@ def sendDailyTweet(status,hour):
     dayWord = "Bugün"
     if int(hour) < 12:
         kindWord = "Günaydın"
-        feels_like = round(status["temp"]["day"])
+        feels_like = round(status["temp"]["day"],1)
     else:
         kindWord = "İyi akşamlar"
-        feels_like = round(status["temp"]["eve"])
+        feels_like = round(status["temp"]["eve"],1)
         if int(hour) > 20:
             dayWord = "Yarın"
-            feels_like = round(status["temp"]["day"])
+            feels_like = round(status["temp"]["day"],1)
     if random.choice([0,0,1]):
         print("Funny text")
         id = status["weather"][0]["id"]
@@ -45,9 +45,14 @@ def sendDailyTweet(status,hour):
         print("not funny word")
         funnyWord = ""
     description = status["weather"][0]["description"]
-    tweet = "{}!\n{} hava {} ve sıcaklık {} derece!\n{}".format(kindWord,dayWord,description,feels_like,funnyWord)
-    print(tweet)
-    api.update_status(status=tweet)
+    try:
+        tweet = "{}!\n{} hava {} ve sıcaklık {} derece!\n{}".format(kindWord,dayWord,description,feels_like,funnyWord)
+        print(tweet)
+        api.update_status(status=tweet)
+    except:
+        tweet = "{}!\n{} hava {} ve sıcaklık {} derece!\n".format(kindWord, dayWord, description, feels_like,funnyWord)
+        print(tweet)
+        api.update_status(status=tweet)
 
 def sendRainAlarm(status):
     tweet = "Dikkat! Bir saat sonra yağmur yağabilir!"
