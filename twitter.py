@@ -46,15 +46,15 @@ def sendDailyTweet(status,hour):
         funnyWord = ""
     description = status["weather"][0]["description"]
     try:
-        tweet = "{}!\n{} hava {} ve sıcaklık {} derece!\n{}".format(kindWord,dayWord,description,feels_like,funnyWord)
+        tweet = "{}!\n{} hava {} ve sıcaklık {} derece!\n{}\n\n#HavaDurumu".format(kindWord,dayWord,description,feels_like,funnyWord)
         print(tweet)
         api.update_status(status=tweet)
     except:
-        tweet = "{}!\n{} hava {} ve sıcaklık {} derece!\n".format(kindWord, dayWord, description, feels_like,funnyWord)
+        tweet = "{}!\n{} hava {} ve sıcaklık {} derece!\n\n#HavaDurumu".format(kindWord, dayWord, description, feels_like,funnyWord)
         print(tweet)
         api.update_status(status=tweet)
 
 def sendRainAlarm(status):
-    tweet = "Dikkat! Bir saat sonra yağmur yağabilir!"
+    tweet = "Dikkat! Bir saat sonra yağmur yağabilir!\n\n#Yağmur #HavaDurumu"
     print(tweet)
     api.update_status(status=tweet)
