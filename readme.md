@@ -1,6 +1,6 @@
 # Weathercast Bot
 
-A twitter weathercastbot. It's live on => twitter.com/havadurumubot 
+A twitter weathercastbot. It's live on => https://twitter.com/havadurumubot
 
   - Everyday at 7 am it sends daily weathercast
   - Everyday at 6 pm it sends this night's weathercast
@@ -40,4 +40,4 @@ $ python3 main.py
 
 ### ToDo
 
-- Use cron instead of sleep
+- Use cron instead of sleep (done)
